@@ -1,0 +1,94 @@
+nav {
+    padding: 0 1rem;
+}
+
+.content {
+    min-height: calc(100vh - 70px - 64px);
+    padding: 1rem 0;
+}
+
+.goods {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.cart {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 5;
+    padding: 1rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+@media (min-width: 767px) {
+    .cart {
+        top: 5rem;
+        bottom: unset;
+    }
+}
+
+.basket-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.basket-list {
+    position: fixed;
+    top: 3rem;
+    left: 0;
+    right: 0;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+
+@media (min-width: 767px) {
+    .basket-list {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        width: 50rem;
+        max-width: 95%;
+        overflow: auto;
+        max-height: 15rem;
+        box-shadow: 0 6px 15px 0 rgba(0,0,0,.5);
+        animation: show .5s ease-in-out;
+    }
+}
+
+.basket-close, .remove-i {
+    cursor: pointer;
+    transition-duration: 500ms;
+
+}
+.basket-close:hover {
+    color: #ff0000;
+}
+
+@keyframes show {
+    from {
+        top:100%;
+        opacity: 0;
+    } to {
+        top: 50%;
+        opacity: 1; 
+    }
+}
+
+.collections-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    min-width: 95%;
+}
