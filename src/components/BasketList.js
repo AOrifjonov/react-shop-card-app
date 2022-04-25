@@ -1,8 +1,10 @@
 import React from 'react'
 import BasketItem from './BasketItem'
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
-export default function BasketList(props) {
-    const { order, handleBasketShow, deleteOrderItem, changeQuantity } = props;
+export default function BasketList() {
+    const { order, handleBasketShow = Function.prototype } = useContext(ShopContext);
     const totalPrice = order.reduce((total, item) => total + item.price * item.quantity, 0);
   return (
     <div className='basket-content'>
@@ -13,7 +15,7 @@ export default function BasketList(props) {
             </li>
             {
                 order.length ? order.map(item => (
-                    <BasketItem changeQuantity={changeQuantity} deleteOrderItem={deleteOrderItem} key={item} {...item} />
+                    <BasketItem key={item} {...item} />
                 )) : <li className='collection-item'>Basket is empty</li>
             }
             <li className='collection-item active'>

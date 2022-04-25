@@ -1,7 +1,11 @@
 import React from 'react'
+import { useContext } from 'react';
+import { toast } from 'react-toastify';
+import { ShopContext } from '../context';
 
 export default function GoodItem(props) {
-    const {id, name, description, price, full_background, addToBasket } = props;
+    const {id, name, description, price, full_background } = props;
+    const { addToBasket } = useContext(ShopContext);
 
   return (
     <div className='card' key={id}>
@@ -14,7 +18,10 @@ export default function GoodItem(props) {
             <p>{description}</p>
         </div>
         <div className='card-action'>
-            <button onClick={()=> addToBasket({id, name, price})} className='btn'>Buy</button>
+            <button onClick={()=> {
+                addToBasket({id, name, price})
+                toast.success(`${name} added to basket`)
+            }} className='btn'>Buy</button>
             <span className='right'>{price} $</span>
         </div>
     </div>
